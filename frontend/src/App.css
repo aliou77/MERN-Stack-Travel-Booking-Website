@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Island+Moments&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 :root {
   --primary-color: #ff7e01;
   --secondary-color: #faa935;
@@ -21,7 +26,7 @@ body {
 }
 
 section {
-  padding: 50px 0px;
+  margin: 50px 0px;
 }
 
 h1,
@@ -37,51 +42,60 @@ a {
   text-decoration: none;
   color: unset;
 }
-ul {
-  list-style: none;
+
+/* classes */
+
+
+/* header css */
+.header-link-item a.active{
+  @apply text-blue-900;
 }
 
-.primary__btn {
-  background: var(--secondary-color) !important;
-  border: none !important;
-  border-radius: 50px !important;
-  padding: 0.4rem 1.5rem !important;
+/* css hero */
+.hero-section .imgs-video img, .hero-section .imgs-video video{
+  @apply rounded-[20px] w-[220px] h-[400px] object-cover;
 }
 
-.primary__btn a {
-  font-size: 1.1rem;
-  text-decoration: none;
-  color: #fff;
+/* css searchbar  */
+.searchbar-section {
+  @apply rounded-[20px] px-4 py-3 w-max;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
-.primary__btn a:hover {
-  color: inherit;
+.searchbar-section svg{
+  @apply text-blue-900 text-[1.8rem];
 }
-.secondary__btn {
-  background: transparent !important;
-  color: #0b2727 !important;
-  border: none !important;
-  font-weight: 500 !important;
+.searchbar-section .form-item{
+  @apply flex items-center gap-4;
 }
 
-.secondary__btn a {
-  text-decoration: none;
-  font-size: 1.1rem;
-  color: var(--heading-color);
+/* css services section */
+.service-item{
+  @apply border-e border-b border-blue-900 rounded-lg flex flex-col gap-4 p-4;
+}
+.service-item span{
+  @apply bg-blue-900 p-[8px] rounded-full w-max;
+}
+.service-item img{
+  @apply w-[50px]  ;
 }
 
-.secondary__btn a:hover {
-  color: inherit;
+
+
+
+
+
+
+.desktop-width{
+  max-width: 1300px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.section__subtitle {
-  background: var(--secondary-color);
-  font-family: var(--subtitle-font-name);
-  width: max-content;
-  padding: 0px 0.5rem;
-  padding-right: 1rem;
-
-  border-radius: 50px;
-  font-weight: 500;
-  font-size: 1.7rem;
-  color: var(--heading-color);
+@media screen and (max-width: 768px) {
+  .desktop-width{
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
