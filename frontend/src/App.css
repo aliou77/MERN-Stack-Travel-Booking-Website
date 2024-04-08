@@ -23,6 +23,7 @@
 
 body {
   font-family: var(--font-name);
+  background: #fafafa;
 }
 
 section {
@@ -76,10 +77,23 @@ a {
   @apply bg-blue-900 p-[8px] rounded-full w-max;
 }
 .service-item img{
-  @apply w-[50px]  ;
+  @apply w-[50px];
 }
 
-
+/* css featured tours section */
+span.featured{
+  @apply absolute bottom-0 right-0 bg-blue-900 py-2 px-3 text-white;
+}
+div.tour-item{
+  @apply max-w-[300px] w-full flex flex-col gap-3 rounded-md pb-6;
+  transition: all .4s;
+}
+div.tour-item:hover{
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+}
+div.tour-item img{
+  @apply rounded-t-md;
+}
 
 
 
