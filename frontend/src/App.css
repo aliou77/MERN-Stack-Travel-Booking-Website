@@ -51,6 +51,14 @@ a {
 .header-link-item a.active{
   @apply text-blue-900;
 }
+.fixed-header{
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  z-index: 10;
+}
 
 /* css hero */
 .hero-section .imgs-video img, .hero-section .imgs-video video{
@@ -123,6 +131,19 @@ div.tour-item img{
 .gallery-section .imgs-content img:hover{
   transform: scale(1.1);
 }
+
+/* css testimonals section */
+.testimonial-item{
+  @apply max-w-[300px] bg-[#e0e0e0] py-[31px] px-[7px] rounded-[1rem] border border-blue-900;
+}
+.btn-newsletter{
+  @apply border border-white bg-blue-900 text-white font-semibold hover:border-blue-900 px-[10px] py-2 rounded-md;
+}
+
+/*  */
+
+
+
 
 .desktop-width{
   max-width: 1300px;

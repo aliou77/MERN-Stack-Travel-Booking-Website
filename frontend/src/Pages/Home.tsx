@@ -9,13 +9,15 @@ import weather from "../assets/images/weather.png"; import guide from "../assets
 import tours from '../assets/data/tours';
 import TourCard from '../Components/TourCard';
 import Gallery from '../Components/Gallery';
+import Testmonial from '../Components/Testmonial';
+import Newsletter from '../Components/Newsletter';
 
 
 function Home() {
   return (
     <>
-      <main className='main-content desktop-width'>
-        <section className="hero-section flex gap-8 ">
+      <main className='main-content'>
+        <section className="hero-section flex gap-8 desktop-width">
           <div className="left w-full">
             <StyledTitle title={"know before you go"} />
             <Title title={"Traveling opens the door to creating"} spanTitle={"memories."} />
@@ -34,13 +36,13 @@ function Home() {
         
         {/* ================== */}
 
-        <section className='section-search-bar'>
+        <section className='section-search-bar desktop-width'>
           <SearchBar />
         </section>
 
         {/* ================= */}
 
-        <section className='services-section mt-[7rem]'>
+        <section className='services-section mt-[7rem] desktop-width'>
           <div className="content flex gap-8">
             <div className="left">
               <StyledTitle title={"what we serve"} />
@@ -79,7 +81,7 @@ function Home() {
         </section>
 
         {/* ================= */}
-        <section className='featured-tours-section mt-[7rem]'>
+        <section className='featured-tours-section mt-[7rem] desktop-width'>
           <div className="content">
             <div className="head">
               <StyledTitle title={"explore"} />
@@ -87,8 +89,8 @@ function Home() {
             </div>
             <div className="tours-content flex gap-8 flex-wrap">
               {
-                tours.map((tour) =>{
-                  return <TourCard tour={tour} />
+                tours.map((tour, index) =>{
+                  return <TourCard tour={tour} key={index} />
                 })
               }
             </div>
@@ -96,7 +98,7 @@ function Home() {
         </section>
 
         {/* ================= */}
-        <section className='experience-section mt-[7rem]'>
+        <section className='experience-section mt-[7rem] desktop-width'>
             <div className="content flex justify-between gap-[10rem]">
               <div className="left">
                 <div className="head">
@@ -126,19 +128,25 @@ function Home() {
         </section>
 
         {/* ================= */}
-        <section className='gallery-section mt-[7rem]'>
+        <section className='gallery-section mt-[7rem] desktop-width'>
           <Gallery />
         </section>
 
         {/* ================= */}
-        <section className='testmonial-section mt-[7rem]'>
+        <section className='testmonial-section mt-[7rem] desktop-width'>
           <div className="content">
             <div className="head">
               <StyledTitle title={"fans love"} />
               <Title title={"what our fans say"} spanTitle={"about us."} />
             </div>
+
+            <Testmonial />
           </div>
         </section>
+
+        {/* ================= */}
+        <Newsletter />
+        
       </main>
     </>
   )

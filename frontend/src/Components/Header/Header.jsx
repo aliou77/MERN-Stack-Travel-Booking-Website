@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Logo from '../Logo'
 import { Link, NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -21,8 +21,27 @@ const nav_link = [
 ]
 
 function Header() {
+  const headerRef = useRef(null)
+ 
+  const fixedHeader = ()=>{
+    window.addEventListener("scroll", ()=>{
+      if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80){
+        console.log("scroll")
+        headerRef.current.classList.add("fixed-header")
+      }else{
+        headerRef.current.classList.remove("fixed-header")
+      }
+    })
+  }
+
+  useEffect(() =>{
+    fixedHeader()
+    return window.removeEventListener("scroll", fixedHeader)
+  });
+
+
   return (
-    <header className='bg-white'>
+    <header className='bg-white' ref={headerRef}>
       <div className='content flex justify-between items-center py-[20px] desktop-width'>
         <Logo />
         <div className='header-links'>
