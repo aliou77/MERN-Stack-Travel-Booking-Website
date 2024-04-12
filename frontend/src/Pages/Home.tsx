@@ -5,10 +5,11 @@ import img1 from '../assets/images/hero-img01.jpg'; import img2 from '../assets/
 import SearchBar from '../Shared/SearchBar';
 import Title from '../Components/Title';
 // @ts-ignore
-import weather from "../assets/images/weather.png"; import guide from "../assets/images/guide.png"; import custom from "../assets/images/customization.png";
+import weather from "../assets/images/weather.png"; import guide from "../assets/images/guide.png"; import custom from "../assets/images/customization.png"; import experience from '../assets/images/experience.png';
 import tours from '../assets/data/tours';
-
 import TourCard from '../Components/TourCard';
+import Gallery from '../Components/Gallery';
+
 
 function Home() {
   return (
@@ -78,7 +79,7 @@ function Home() {
         </section>
 
         {/* ================= */}
-        <section className='featured-tours-section'>
+        <section className='featured-tours-section mt-[7rem]'>
           <div className="content">
             <div className="head">
               <StyledTitle title={"explore"} />
@@ -90,6 +91,51 @@ function Home() {
                   return <TourCard tour={tour} />
                 })
               }
+            </div>
+          </div>
+        </section>
+
+        {/* ================= */}
+        <section className='experience-section mt-[7rem]'>
+            <div className="content flex justify-between gap-[10rem]">
+              <div className="left">
+                <div className="head">
+                  <StyledTitle title={"experience"} />
+                  <Title title={"with all our experience we will"} spanTitle={"serve you."} />
+                  <p className='mt-4 mb-8'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia nesciunt autem doloribus ex delectus magni nobis.</p>
+                </div>
+                <div className='experience-rates flex gap-8'>
+                  <div className="ex-item flex flex-col justify-center items-center">
+                    <span className='ex-text'>12k+</span>
+                    <p>Successful trip</p>
+                  </div>
+                  <div className="ex-item flex flex-col justify-center items-center">
+                    <span className='ex-text'>2k+</span>
+                    <p>Regular client</p>
+                  </div>
+                  <div className="ex-item flex flex-col justify-center items-center">
+                    <span className='ex-text'>15</span>
+                    <p>Year experience</p>
+                  </div>
+                </div>
+              </div>
+              <div className="right">
+                <img src={experience} alt="experience img" />
+              </div>
+            </div>
+        </section>
+
+        {/* ================= */}
+        <section className='gallery-section mt-[7rem]'>
+          <Gallery />
+        </section>
+
+        {/* ================= */}
+        <section className='testmonial-section mt-[7rem]'>
+          <div className="content">
+            <div className="head">
+              <StyledTitle title={"fans love"} />
+              <Title title={"what our fans say"} spanTitle={"about us."} />
             </div>
           </div>
         </section>

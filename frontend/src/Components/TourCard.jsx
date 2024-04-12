@@ -16,7 +16,7 @@ function TourCard({ tour }) {
           : ""
         }
       </div>
-      <div className="body pt-2 px-3 flex flex-col gap-4 bg-white">
+      <div className="body pt-2 px-3 flex flex-col gap-4">
         <div className="notes flex justify-between">
           <div className="flex gap-2 items-center">
             <FontAwesomeIcon icon={faMapMarkerAlt} className='text-blue-900' />
