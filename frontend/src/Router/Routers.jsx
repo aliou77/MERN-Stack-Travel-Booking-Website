@@ -6,6 +6,7 @@ import SearchResultList from '../Pages/SearchResultList';
 import Login from '../Pages/Login';
 import Register from '../Pages/Register';
 import TourDetails from '../Pages/TourDetails';
+import ThankYou from '../Pages/ThankYou';
 
 function Routers() {
   return (
@@ -17,6 +18,7 @@ function Routers() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/tours/search' element={<SearchResultList />} />
+        <Route path='/thank-you' element={<ThankYou />} />
     </Routes>
   )
 }
