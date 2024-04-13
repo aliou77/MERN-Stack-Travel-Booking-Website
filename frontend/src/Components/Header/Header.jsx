@@ -24,14 +24,19 @@ function Header() {
   const headerRef = useRef(null)
  
   const fixedHeader = ()=>{
-    window.addEventListener("scroll", ()=>{
-      if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80){
-        // console.log("scroll")
-        headerRef.current.classList.add("fixed-header")
-      }else{
-        headerRef.current.classList.remove("fixed-header")
-      }
-    })
+
+    try {
+      window.addEventListener("scroll", ()=>{
+        if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80){
+          // console.log("scroll")
+          headerRef.current.classList.add("fixed-header")
+        }else{
+          headerRef.current.classList.remove("fixed-header")
+        }
+      })
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 
   useEffect(() =>{

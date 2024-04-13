@@ -159,6 +159,21 @@ div.tour-item img{
   @apply bg-blue-900 text-white;
 }
 
+/* css form informations */
+.form-informations input{
+  transition: all .4s;
+}
+.form-informations input:focus{
+  @apply border-blue-900;
+}
+
+
+
+
+
+
+
+
 
 .desktop-width{
   max-width: 1300px;
