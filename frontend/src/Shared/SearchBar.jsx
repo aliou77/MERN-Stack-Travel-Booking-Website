@@ -19,7 +19,7 @@ function SearchBar() {
     
 
   return (
-    <div className='searchbar-section mt-[3rem]'>
+    <div className='searchbar-section'>
         <div className='content'>
             <form className='flex gap-8'>
                 <div className='form-item border-r border-[#ddd]'>

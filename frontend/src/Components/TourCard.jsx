@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faStar } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import calculateAvgRating from '../utls/calculateAvgRating';
 
 function TourCard({ tour }) {

@@ -45,7 +45,9 @@ a {
 }
 
 /* classes */
-
+.img-center{
+  @apply bg-cover bg-center;
+}
 
 /* header css */
 .header-link-item a.active{
@@ -75,6 +77,9 @@ a {
 }
 .searchbar-section .form-item{
   @apply flex items-center gap-4;
+}
+.searchbar-section input{
+  background: transparent;
 }
 
 /* css services section */
@@ -140,9 +145,19 @@ div.tour-item img{
   @apply border border-white bg-blue-900 text-white font-semibold hover:border-blue-900 px-[10px] py-2 rounded-md;
 }
 
-/*  */
-
-
+/* =========================================== */
+/* css tour page */
+.hero-tour{
+  @apply w-full h-[20rem] img-center bg-no-repeat;
+  background-image: url("./assets/images/tour.jpg");
+}
+.pagination-item{
+  @apply text-blue-900 border border-blue-900  py-[5px] px-3 rounded-full cursor-pointer;
+  transition: all .4s;
+}
+.pagination-item.active, .pagination-item:hover{
+  @apply bg-blue-900 text-white;
+}
 
 
 .desktop-width{

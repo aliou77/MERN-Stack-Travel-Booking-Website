@@ -31,7 +31,7 @@ function Testmonial() {
                 draggable={true}
                 autoPlaySpeed={2000}
                 infinite={true}
-                customTransition="all .5"
+                autoPlay={true}
                 >
                 <div className="testimonial-item ">
                     <div className="head flex flex-col items-center justify-center gap-[10px]">

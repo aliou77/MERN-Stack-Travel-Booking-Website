@@ -6,11 +6,10 @@ import SearchBar from '../Shared/SearchBar';
 import Title from '../Components/Title';
 // @ts-ignore
 import weather from "../assets/images/weather.png"; import guide from "../assets/images/guide.png"; import custom from "../assets/images/customization.png"; import experience from '../assets/images/experience.png';
-import tours from '../assets/data/tours';
-import TourCard from '../Components/TourCard';
 import Gallery from '../Components/Gallery';
 import Testmonial from '../Components/Testmonial';
 import Newsletter from '../Components/Newsletter';
+import TourCardList from '../Components/TourCardList';
 
 
 function Home() {
@@ -36,7 +35,7 @@ function Home() {
         
         {/* ================== */}
 
-        <section className='section-search-bar desktop-width'>
+        <section className='section-search-bar mt-[3rem] desktop-width'>
           <SearchBar />
         </section>
 
@@ -87,13 +86,8 @@ function Home() {
               <StyledTitle title={"explore"} />
               <Title title={"our featured"} spanTitle={"tours."} />
             </div>
-            <div className="tours-content flex gap-8 flex-wrap">
-              {
-                tours.map((tour, index) =>{
-                  return <TourCard tour={tour} key={index} />
-                })
-              }
-            </div>
+            
+            <TourCardList />
           </div>
         </section>
 
