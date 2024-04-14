@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import calculateAvgRating from '../utls/calculateAvgRating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import {navigate, useNavigate} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 
 function Booking({tour}) {
     const { avgRating, totalRating} = calculateAvgRating(tour?.reviews);
