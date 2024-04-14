@@ -48,6 +48,16 @@ a {
 .img-center{
   @apply bg-cover bg-center;
 }
+.btn-submit{
+  @apply font-medium text-white bg-blue-900 py-2 rounded-full hover:bg-blue-800;
+}
+.input-field{
+  @apply outline-none border-b border-gray-500 text-lg bg-transparent w-full;
+  transition: all .4s;
+}
+.input-field:focus{
+  @apply border-blue-900;
+}
 
 /* header css */
 .header-link-item a.active{
@@ -167,7 +177,13 @@ div.tour-item img{
   @apply border-blue-900;
 }
 
-
+/* css login page */
+.main-login .content, .main-register .content{
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+.login-img{
+  @apply h-[26rem];
+}
 
 
 

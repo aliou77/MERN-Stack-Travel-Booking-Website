@@ -16,7 +16,7 @@ function Booking({tour}) {
     })
     const navigate = useNavigate()
 
-    const handleChange = (e: Event) =>{
+    const handleChange = (e) =>{
         // console.log(e.target.id)
         setCredentials(prev => ({
             ...prev,
@@ -24,7 +24,7 @@ function Booking({tour}) {
         }))
     }
 
-    const handleClick = (e: Event) =>{
+    const handleClick = (e) =>{
         e.preventDefault()
         // console.log(credentials)
         navigate("/thank-you");
@@ -71,7 +71,7 @@ function Booking({tour}) {
                         </div>
                     </div>
                     <div className="btn-informations w-full mt-[3rem]">
-                        <button type='submit' onClick={handleClick} className=' w-full font-medium text-white bg-blue-900 py-2 rounded-full hover:bg-blue-800'>Book now</button>
+                        <button type='submit' onClick={handleClick} className=' w-full '>Book now</button>
                     </div>
                 </form>
             </div>
