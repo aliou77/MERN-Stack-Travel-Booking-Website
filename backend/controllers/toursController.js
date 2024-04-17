@@ -78,7 +78,7 @@ export const deleteTour = (req, res) => {
 export const getOneTour = async(req, res) => {
     const id = req.params.id;
     try {
-        const tour = await Tour.findById(id);
+        const tour = await Tour.findById(id).populate("reviews");
         
         res
         .status(200)
@@ -103,7 +103,8 @@ export const getAllTour = async (req, res) => {
     const page = req.query.page ? parseInt(req.query.page) : 0;
     
     try {
-        const tours = await Tour.find({}).skip(page * 8).limit(8);
+        // populate("reviews") will retrieve all reviews related to each tour if it got inside it, by using reviews ids inside reviews[]
+        const tours = await Tour.find({}).skip(page * 8).limit(8).populate("reviews");
         
         res
         .status(200)
@@ -138,7 +139,7 @@ export const getTourBySearch = async (req, res) => {
                 city, 
                 distance: {$gte: distance}, 
                 maxGroupSize: {$gte: maxGroupSize}
-        }).skip(page * 8).limit(8);
+        }).skip(page * 8).limit(8).populate("reviews");
 
         res
         .status(200)
@@ -163,7 +164,7 @@ export const getTourBySearch = async (req, res) => {
 export const getFeaturedTours = async (req, res) => {
 
     try {
-        const tours = await Tour.find({ featured: true }).limit(8);
+        const tours = await Tour.find({ featured: true }).limit(8).populate("reviews");
 
         res
         .status(200)
