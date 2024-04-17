@@ -6,7 +6,7 @@ export const createTour = async (req, res)=>{
     const newTour = new Tour(req.body);
 
     try {
-        const savedTour = newTour.save();
+        const savedTour = await newTour.save();
 
         res
         .status(200)
@@ -26,10 +26,10 @@ export const createTour = async (req, res)=>{
 }
 
 // update the tour
-export const updateTour = (req, res) => {
+export const updateTour = async (req, res) => {
     const id = req.params.id;
     try {
-        const updatedTour = Tour.findByIdAndUpdate(id, {
+        const updatedTour = await Tour.findByIdAndUpdate(id, {
             $set: req.body
         }, {new: true});
         
@@ -52,10 +52,10 @@ export const updateTour = (req, res) => {
 }
 
 // delete the tour
-export const deleteTour = (req, res) => {
+export const deleteTour = async (req, res) => {
     const id = req.params.id;
     try {
-        Tour.findByIdAndDelete(id);
+        await Tour.findByIdAndDelete(id);
         
         res
         .status(200)

@@ -4,7 +4,7 @@ import Tour from "../models/Tour.js";
 
 export const createReview = async (req, res) =>{
     const tourId = req.params.tourId;
-    const newReview = await Review({...req.body})
+    const newReview = new Review({...req.body})
 
     try {
         const savedReview = await newReview.save();
