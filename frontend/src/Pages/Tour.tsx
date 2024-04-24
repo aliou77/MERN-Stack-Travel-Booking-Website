@@ -2,19 +2,27 @@ import React, { useEffect, useState } from 'react'
 import SearchBar from '../Shared/SearchBar';
 import TourCardList from '../Components/TourCardList';
 import Newsletter from '../Components/Newsletter'
+import useFetch from '../hooks/useFetch';
+import { BASE_URL } from '../utls/config';
 
 function Tour() {
   const [page, setPage] = useState(0);
   const [pageCount, setPageCount] = useState(0);
 
+  // feching data from the server
+  const {data:tours, loading, error} = useFetch(`${BASE_URL}/tours?page=${page}`)
+  const {data:tourCount} = useFetch(`${BASE_URL}/tours/search/tourCount`)
   
+  // console.log(tours, tourCount);
 
   useEffect(()=>{
-    const pages = Math.ceil(5/4);
+    const pages = Math.ceil(tourCount / 8);
     setPageCount(pages);
-
+    
+    // scroll to top when 
+    window.scrollTo(0,150);
     // console.log(pageCount, [...Array(pageCount)])
-  }, [page])
+  }, [page, tourCount, tours])
 
   return (
     <main className='main-tours'>
@@ -28,11 +36,17 @@ function Tour() {
             <SearchBar />
           </div>
           <div className="tours-list">
-            <TourCardList />
+            <TourCardList tours={tours} />
 
             <div className="pagination flex gap-4 items-center justify-center mt-8">
               {
-                [...Array(pageCount).keys()].map((item, index) =>{
+                loading && <h2 className='text-blue-900 text-xl text-center font-semibold'>Loading...</h2>
+              }
+              {
+                error && <h2 className='text-red-700 text-xl text-center font-semibold'>{error.message}</h2>
+              }
+              {
+                !loading && !error && [...Array(pageCount).keys()].map((item, index) =>{
                   return <span 
                           className={page === item ? 'pagination-item active' : "pagination-item"}
                           key={index} 
