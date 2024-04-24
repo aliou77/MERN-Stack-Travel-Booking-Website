@@ -16,15 +16,15 @@ function Booking({tour}) {
     })
     const navigate = useNavigate()
 
-    const handleChange = (e) =>{
-        // console.log(e.target.id)
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
+        // console.log( e)
         setCredentials(prev => ({
             ...prev,
             [e.target?.name]: e.target?.value
         }))
     }
 
-    const handleClick = (e) =>{
+    const handleClick = (e: React.MouseEvent<HTMLElement>) =>{
         e.preventDefault()
         // console.log(credentials)
         navigate("/thank-you");

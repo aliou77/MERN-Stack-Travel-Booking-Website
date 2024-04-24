@@ -105,7 +105,7 @@ a {
 
 /* css featured tours section */
 span.featured{
-  @apply absolute bottom-0 right-0 bg-blue-900 py-2 px-3 text-white;
+  @apply absolute bottom-0 right-0 bg-blue-900 py-2 px-3 text-white rounded-ss-md;
 }
 div.tour-item{
   @apply max-w-[300px] w-full flex flex-col gap-3 rounded-md pb-6 bg-white;

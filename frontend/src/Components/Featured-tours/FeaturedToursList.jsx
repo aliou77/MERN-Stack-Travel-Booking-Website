@@ -2,6 +2,9 @@ import TourCard from "../TourCard";
 import TourData from "../../assets/data/tours";
 
 function FeaturedToursList() {
+
+  
+
   return (
     <>
     {

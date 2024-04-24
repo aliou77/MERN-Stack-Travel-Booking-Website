@@ -9,7 +9,9 @@ import authRoute from './routes/auth.js';
 import reviewRoute from './routes/reviews.js';
 import bookingRoute from './routes/bookings.js';
 
+// Loads .env file contents into process.env by default.
 dotenv.config();
+
 const app = express();
 const port = process.env.PORT || 8000;
 
@@ -41,7 +43,6 @@ app.use('/api/v1/tours', toursRoute);
 app.use('/api/v1/users', usersRoute);
 app.use('/api/v1/reviews', reviewRoute);
 app.use('/api/v1/booking', bookingRoute);
-
 
 
 app.listen(port, ()=>{

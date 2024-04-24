@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import calculateAvgRating from '../utls/calculateAvgRating';
 
 function TourCard({ tour }) {
-    const {id, title, photo, featured, price, reviews, city} = tour;
+    const {_id, title, photo, featured, price, reviews, city} = tour;
     const { avgRating, totalRating} = calculateAvgRating(reviews);
 
   return (
@@ -28,14 +28,14 @@ function TourCard({ tour }) {
           </div>
         </div>
         <h4 className='font-semibold text-lg'>
-          <Link to={`/tours/${id}`} className='hover:text-blue-900' >{title}</Link>
+          <Link to={`/tours/${_id}`} className='hover:text-blue-900' >{title}</Link>
         </h4>
         <div className="prices flex justify-between">
           <div className="price">
             <span className='text-blue-900 font-semibold'>${price}</span>/per person
           </div>
           <div className="btn-book">
-            <Link to={`/tours/${id}`} className='px-3 py-2 rounded-md bg-blue-900 text-white font-medium'>Book now</Link>
+            <Link to={`/tours/${_id}`} className='px-3 py-2 rounded-md bg-blue-900 text-white font-medium'>Book now</Link>
           </div>
         </div>
       </div>

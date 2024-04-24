@@ -93,7 +93,7 @@ export const getOneTour = async(req, res) => {
         .status(404)
         .json({
             success: false,
-            message: "Tour not found",
+            message: "Sorry, Tour not found",
         })
     }
 }

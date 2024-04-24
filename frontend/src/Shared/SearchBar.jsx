@@ -1,13 +1,17 @@
 import { faLocation, faMapMarkerAlt, faSearch, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useRef } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../utls/config';
 
 function SearchBar() {
     const locationref = useRef('')
     const distanceref = useRef(0)
     const groupsref = useRef(0)
 
-    const searchbarHandler = () =>{
+    const navigate = useNavigate()
+
+    const searchbarHandler = async() =>{
         const location = locationref.current.value
         const distance = distanceref.current.value
         const groups = groupsref.current.value
@@ -15,6 +19,13 @@ function SearchBar() {
             alert('fields are required !')
         }
         // console.log(location, distance, groups);
+        const res = await fetch(`${BASE_URL}/tours/search/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${groups}`);
+
+        if(!res.ok) alert('Something went wrong !')
+
+        const result = await res.json();
+        navigate(`/tours/search?city=${location}&distance=${distance}&maxGroupSize=${groups}`, 
+        { state: result?.data})
     }
     
 

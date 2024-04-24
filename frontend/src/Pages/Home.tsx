@@ -13,6 +13,7 @@ import TourCardList from '../Components/TourCardList';
 
 
 function Home() {
+
   return (
     <>
       <main className='main-content'>
