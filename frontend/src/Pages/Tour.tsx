@@ -20,7 +20,7 @@ function Tour() {
     setPageCount(pages);
     
     // scroll to top when 
-    window.scrollTo(0,150);
+    window.scrollTo(0,0);
     // console.log(pageCount, [...Array(pageCount)])
   }, [page, tourCount, tours])
 

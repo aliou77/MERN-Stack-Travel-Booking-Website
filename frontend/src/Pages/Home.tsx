@@ -88,7 +88,7 @@ function Home() {
               <Title title={"our featured"} spanTitle={"tours."} />
             </div>
             
-            <TourCardList />
+            <TourCardList tours={null} />
           </div>
         </section>
 

@@ -41,7 +41,7 @@ function Booking({tour}) {
                 <h3 className='text-[2rem] font-bold'>${tour?.price} <span className='text-base text-gray-600'>/per person</span></h3>
                 <div className="rating flex gap-2 items-center">
                     <FontAwesomeIcon icon={faStar} className='text-orange-400' />
-                    {avgRating === 0 ? null : avgRating} { totalRating === 0 ? "No rating" : "("+tour?.reviews.length+")"}
+                    {avgRating === 0 ? null : avgRating} { totalRating === 0 ? "No rating" : "("+totalRating+")"}
               </div>
             </div>
             <p className='pt-[1px] bg-blue-400 my-8'></p>
@@ -71,7 +71,7 @@ function Booking({tour}) {
                         </div>
                     </div>
                     <div className="btn-informations w-full mt-[3rem]">
-                        <button type='submit' onClick={handleClick} className=' w-full '>Book now</button>
+                        <button type='submit' onClick={handleClick} className='w-full btn-submit'>Book now</button>
                     </div>
                 </form>
             </div>
