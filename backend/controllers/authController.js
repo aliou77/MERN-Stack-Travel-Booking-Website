@@ -40,7 +40,7 @@ export const login = async (req, res)=>{
         // if password not match
         if(!checkPassword) return res.status(401).json({success: false, message: "Incorrect email or password"})
         
-        const [password, role, ...rest] = user._doc
+        const {password, role, ...rest} = user._doc // will get all fields about user object
 
         // create jwt token
         const jwtToken = jwt.sign({id: user._id, role: user.role}, process.env.JWT_SECRET_KEY, {expiresIn: "15d"})
@@ -54,12 +54,14 @@ export const login = async (req, res)=>{
                 success: true, 
                 message: "successfully login", 
                 data: {...rest},
-                Token,
-                role
+                token: jwtToken,
+                role,
+                status: 200
             }
         )
 
     } catch (error) {
+        // res.status(500).json({success: false, message: error.message})
         res.status(500).json({success: false, message: "Failed to login"})
     }
 }

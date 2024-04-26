@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 // @ts-ignore
 import loginImg from '../assets/images/login.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { AuthContext } from '../context/AuthContext'
+import { BASE_URL } from '../utls/config'
 
 
 function Login() {
@@ -21,9 +23,36 @@ function Login() {
     }))
   }
 
-  const handleClick = (e)=>{
+  const {dispatch} = useContext(AuthContext);
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e)=>{
     e.preventDefault();
+    dispatch({type: "LOGIN_START"});
     // console.log(credentials)
+    // verify user credentials
+    try {
+      const res = await fetch(`${BASE_URL}/auth/login`, {
+        method: 'POST',
+        headers:{
+          'content-type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify(credentials)
+      });
+      const result = await res.json();
+
+      if(result.status !== 200 ){
+        alert(result.message);
+      }else{
+        dispatch({type: "LOGIN_SUCCESS", payload: result.data})
+        navigate("/")
+      }
+      // console.log(result)
+      
+    } catch (error) {
+      dispatch({type: "LOGIN_FAILURE", payload: error.message})
+    }
   }
 
 
@@ -41,7 +70,7 @@ function Login() {
               <FontAwesomeIcon icon={faUserCircle} className=' text-[6rem] text-blue-900' />
             </div>
             <h1 className='text-[2rem] font-semibold mt-[4rem]'>Login</h1>
-            <form onSubmit={handleClick} className="flex flex-col gap-7">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-7">
               <input type="email" name='email' 
                 value={credentials.email} 
                 onChange={handleChange} 

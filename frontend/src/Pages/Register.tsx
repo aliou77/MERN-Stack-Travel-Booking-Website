@@ -1,18 +1,23 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 // @ts-ignore
 import registerImg from '../assets/images/register.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { AuthContext } from '../context/AuthContext'
+import { BASE_URL } from '../utls/config'
 
 
 function Register() {
 
   const [credentials, setCredentials] = useState({
-    userName: "",
+    username: "",
     email: "",
     password: ""
   })
+
+  const {dispatch} = useContext(AuthContext);
+  const navigate = useNavigate()
 
   const handleChange = (e) =>{
     // console.log(e.target.id)
@@ -22,9 +27,31 @@ function Register() {
     }))
   }
 
-  const handleClick = (e)=>{
+  const handleClick = async (e)=>{
     e.preventDefault();
-    console.log(credentials)
+    // console.log(credentials)
+    try {
+      // post user credentials to the server
+      const res = await fetch(`${BASE_URL}/auth/register`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(credentials)
+      });
+      const result = await res.json();
+      if (!result.ok){
+        alert(result.message);
+      } 
+
+      // dispatch the state change
+      dispatch({type: 'REGISTER_SUCCESS'});
+      // got the login page
+      navigate("/login");
+
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
 
@@ -43,8 +70,8 @@ function Register() {
             </div>
             <h1 className='text-[2rem] font-semibold mt-[4rem]'>Register</h1>
             <form onSubmit={handleClick} className="flex flex-col gap-7">
-              <input type="text" name='userName' 
-                value={credentials.userName} 
+              <input type="text" name='username' 
+                value={credentials.username} 
                 onChange={handleChange} 
                 placeholder='Username' 
                 className='input-field'

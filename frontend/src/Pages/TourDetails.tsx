@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
 import {useParams} from 'react-router-dom';
-import TourData from "../assets/data/tours";
 import calculateAvgRating from '../utls/calculateAvgRating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocation, faLocationDot, faMoneyBill, faStar, faUserGroup } from '@fortawesome/free-solid-svg-icons';
@@ -13,7 +12,7 @@ function TourDetails() {
 
   const {id} = useParams(); // get the id param set in this route (Routers.jsx)
   const {data: tour, loading, error} = useFetch(`${BASE_URL}/tours/${id}`);
-  console.log(tour);
+  // console.log(tour);
   
 
   // const tour = TourData.find(tour => tour.id === "01");

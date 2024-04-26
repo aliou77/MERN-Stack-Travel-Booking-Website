@@ -71,7 +71,7 @@ function Booking({tour}) {
                         </div>
                     </div>
                     <div className="btn-informations w-full mt-[3rem]">
-                        <button type='submit' onClick={handleClick} className='w-full btn-submit'>Book now</button>
+                        <button type='submit' className='w-full btn-submit'>Book now</button>
                     </div>
                 </form>
             </div>

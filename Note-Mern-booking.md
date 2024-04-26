@@ -19,7 +19,7 @@ using Jest framwork to test our react application
 
 
 ### Tasks
-- stoped at reviews routes set up
+- then fix res.ok condition, gotta set up a status: 200 and handle it.
 
 - check instructions inside authController (login function)
 - check verifyToken function too

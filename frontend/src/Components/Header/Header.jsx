@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import Logo from '../Logo'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { AuthContext } from '../../context/AuthContext'
 
 
 const nav_link = [
@@ -21,7 +22,16 @@ const nav_link = [
 ]
 
 function Header() {
-  const headerRef = useRef(null)
+  const headerRef = useRef(null);
+
+  // logout the user
+  const navigate = useNavigate()
+  const {user, dispatch} = useContext(AuthContext)
+
+  const logout = ()=>{
+    dispatch({type: "LOGOUT"})
+    navigate("/login")
+  }
  
   const fixedHeader = ()=>{
 
@@ -64,12 +74,28 @@ function Header() {
         </div>
         <div className='connexion-links'>
             <div className='content flex gap-8 font-medium'>
-              <p>
-                <Link className='text-lg ' to={"/login"}>Login</Link>
-              </p>
-              <p>
-                <Link className='text-lg text-white bg-blue-900 px-[20px] py-[12px] rounded-full' to={"/register"}>Register</Link>
-              </p>
+              {
+                user
+                ?
+                (<>
+                  <p>
+                    <span className='text-lg text-blue-900 capitalize'>{user.username}</span>
+                  </p>
+                  <p>
+                    <span className='text-lg text-white bg-blue-900 px-[20px] py-[12px] rounded-full hover:text-red-600 cursor-pointer' onClick={logout}>Logout</span>
+                  </p>
+                </>)
+                :
+                (<>
+                  <p>
+                    <Link className='text-lg ' to={"/login"}>Login</Link>
+                  </p>
+                  <p>
+                    <Link className='text-lg text-white bg-blue-900 px-[20px] py-[12px] rounded-full' to={"/register"}>Register</Link>
+                  </p>
+                </>)
+              }
+              
               <div className='sm:hidden block'>
                 <FontAwesomeIcon icon={faBars} />
               </div>
