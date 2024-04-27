@@ -32,7 +32,7 @@ function SearchBar() {
   return (
     <div className='searchbar-section'>
         <div className='content'>
-            <form className='flex gap-8'>
+            <form className='flex gap-8 md:flex-row flex-col lg:flex-nowrap flex-wrap'>
                 <div className='form-item border-r border-[#ddd]'>
                     <FontAwesomeIcon icon={faLocation} />
                     <div>
@@ -57,7 +57,8 @@ function SearchBar() {
                 <div>
                     <p className='bg-blue-900 p-[5px] rounded-md'>
                         <span typeof='submit' className='cursor-pointer' onClick={searchbarHandler}>
-                            <FontAwesomeIcon icon={faSearch} className='!text-white text-[1.6rem]' />
+                            <FontAwesomeIcon icon={faSearch} className='!text-white text-[1.6rem] sm:block hidden' />
+                            <span className='sm:hidden block font-semibold text-center text-white'>Search</span>
                         </span>
                     </p>
                 </div>

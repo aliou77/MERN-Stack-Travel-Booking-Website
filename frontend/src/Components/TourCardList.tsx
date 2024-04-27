@@ -9,7 +9,7 @@ function TourCardList({ tours }) {
   const {loading, error, data} = useFetch(`${BASE_URL}/tours/search/featuredTours`)
   if(tours){
     return (
-      <div className="tours-content flex gap-8 flex-wrap">
+      <div className="tours-content flex gap-8 flex-wrap justify-around">
         
         {
           loading && <h2 className='text-blue-900 text-xl text-center font-semibold'>Loading...</h2>

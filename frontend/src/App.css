@@ -74,12 +74,15 @@ a {
 
 /* css hero */
 .hero-section .imgs-video img, .hero-section .imgs-video video{
-  @apply rounded-[20px] w-[220px] h-[400px] object-cover;
+  @apply rounded-[20px] sm:w-[220px] w-full h-[400px] object-cover;
+}
+.hero-section .imgs-video video{
+  @apply sm:h-[400px] h-[240px];
 }
 
 /* css searchbar  */
 .searchbar-section {
-  @apply rounded-[20px] px-4 py-3 w-max;
+  @apply rounded-[20px] px-4 py-3 lg:w-max w-full;
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 .searchbar-section svg{
@@ -94,7 +97,7 @@ a {
 
 /* css services section */
 .service-item{
-  @apply border-e border-b border-blue-900 rounded-lg flex flex-col gap-4 p-4;
+  @apply border-e border-b border-blue-900 rounded-lg flex flex-col gap-4 p-4 w-full;
 }
 .service-item span{
   @apply bg-blue-900 p-[8px] rounded-full w-max;
@@ -108,7 +111,7 @@ span.featured{
   @apply absolute bottom-0 right-0 bg-blue-900 py-2 px-3 text-white rounded-ss-md;
 }
 div.tour-item{
-  @apply max-w-[300px] w-full flex flex-col gap-3 rounded-md pb-6 bg-white;
+  @apply sm:max-w-[280px] max-w-full w-full flex flex-col gap-3 rounded-md pb-6 bg-white;
   transition: all .4s;
 }
 div.tour-item:hover{
@@ -196,6 +199,8 @@ div.tour-item img{
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 @media screen and (max-width: 768px) {

@@ -57,20 +57,20 @@ function Login() {
 
 
   return (
-    <main className='main-login p-[12rem] desktop-width'>
+    <main className='main-login sm:py-[12rem] py-[7rem] desktop-width'>
       <div className="content flex ">
-        <div className="left w-[84rem]">
-          <div className="img">
+        <div className="left w-[84rem] md:block hidden">
+          <div className="img justify-center">
             <img src={loginImg} className='login-img' alt="login" />
           </div>
         </div>
-        <div className="right relative w-full border-s border-blue-900">
+        <div className="right relative w-full sm:border-s border-none border-blue-900 md:pb-0 pb-8">
           <div className="right-content flex flex-col justify-center items-center gap-4">
             <div className="icon absolute top-[-44px] flex justify-center w-full">
               <FontAwesomeIcon icon={faUserCircle} className=' text-[6rem] text-blue-900' />
             </div>
             <h1 className='text-[2rem] font-semibold mt-[4rem]'>Login</h1>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-7">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-7 w-[75%]">
               <input type="email" name='email' 
                 value={credentials.email} 
                 onChange={handleChange} 
@@ -86,7 +86,7 @@ function Login() {
                 className='input-field'
                 required
                 />
-              <div className="btn">
+              <div className="btn mt-4">
                 <button type='submit' className='btn-submit w-full'>Login</button>
               </div>
             </form>

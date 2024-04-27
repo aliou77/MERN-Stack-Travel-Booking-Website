@@ -15,7 +15,7 @@ function Newsletter() {
                 </div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae voluptatibus veritatis distinctio provident iste quidem!</p>
             </div>
-            <div className="right">
+            <div className="right md:block hidden">
                 <img src={img} alt="male tourist" />
             </div>
         </div>

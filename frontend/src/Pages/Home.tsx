@@ -17,7 +17,7 @@ function Home() {
   return (
     <>
       <main className='main-content'>
-        <section className="hero-section flex gap-8 desktop-width">
+        <section className="hero-section flex lg:flex-row flex-col gap-8 desktop-width">
           <div className="left w-full">
             <StyledTitle title={"know before you go"} />
             <Title title={"Traveling opens the door to creating"} spanTitle={"memories."} />
@@ -26,10 +26,10 @@ function Home() {
             </p>
           </div>
           <div className="rigth w-full">
-            <div className="imgs-video flex gap-3">
-              <img src={img1} alt="hero-img-1" />
+            <div className="imgs-video flex gap-3 sm:flex-row flex-col md:justify-around justify-normal">
+              <img src={img1} alt="hero-img-1" className='sm:block hidden' />
               <video src={video} autoPlay muted loop className='mt-4'></video>
-              <img src={img2} alt="hero-img-2" className='mt-8' />
+              <img src={img2} alt="hero-img-2" className='mt-8 sm:block hidden' />
             </div>
           </div>
         </section>
@@ -43,12 +43,12 @@ function Home() {
         {/* ================= */}
 
         <section className='services-section mt-[7rem] desktop-width'>
-          <div className="content flex gap-8">
+          <div className="content flex gap-8 lg:flex-row flex-col">
             <div className="left">
               <StyledTitle title={"what we serve"} />
               <Title title={"we offer our best "} spanTitle={"services."} />
             </div>
-            <div className="right w-full flex gap-4">
+            <div className="right w-full flex sm:flex-nowrap flex-wrap gap-4">
               <div className="service-item">
                 <span>
                   <img src={weather} alt="weather logo" />
@@ -83,7 +83,7 @@ function Home() {
         {/* ================= */}
         <section className='featured-tours-section mt-[7rem] desktop-width'>
           <div className="content">
-            <div className="head">
+            <div className="head mb-4">
               <StyledTitle title={"explore"} />
               <Title title={"our featured"} spanTitle={"tours."} />
             </div>
@@ -94,14 +94,14 @@ function Home() {
 
         {/* ================= */}
         <section className='experience-section mt-[7rem] desktop-width'>
-            <div className="content flex justify-between gap-[10rem]">
+            <div className="content lg:flex-row flex-col flex justify-between gap-[10rem]">
               <div className="left">
                 <div className="head">
                   <StyledTitle title={"experience"} />
                   <Title title={"with all our experience we will"} spanTitle={"serve you."} />
                   <p className='mt-4 mb-8'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia nesciunt autem doloribus ex delectus magni nobis.</p>
                 </div>
-                <div className='experience-rates flex gap-8'>
+                <div className='experience-rates flex gap-8 lg:justify-normal justify-center'>
                   <div className="ex-item flex flex-col justify-center items-center">
                     <span className='ex-text'>12k+</span>
                     <p>Successful trip</p>
@@ -116,7 +116,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="right">
+              <div className="right flex justify-center">
                 <img src={experience} alt="experience img" />
               </div>
             </div>

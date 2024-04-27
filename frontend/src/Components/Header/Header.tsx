@@ -59,7 +59,7 @@ function Header() {
     <header className='bg-white' ref={headerRef}>
       <div className='content flex justify-between items-center py-[20px] desktop-width'>
         <Logo />
-        <div className='header-links'>
+        <div className='header-links md:block hidden'>
           <ul className='links flex justify-center gap-8 text-black text-lg'>
             {
               nav_link.map((item, index) =>(
@@ -73,33 +73,33 @@ function Header() {
           </ul>
         </div>
         <div className='connexion-links'>
-            <div className='content flex gap-8 font-medium'>
+            <div className='content flex sm:gap-8 gap-6 font-medium'>
               {
                 user
                 ?
                 (<>
                   <p>
-                    <span className='text-lg text-blue-900 capitalize'>{user.username}</span>
+                    <span className='sm:text-lg text-base text-blue-900 capitalize'>{user.username}</span>
                   </p>
                   <p>
-                    <span className='text-lg text-white bg-blue-900 px-[20px] py-[12px] rounded-full hover:text-red-600 cursor-pointer' onClick={logout}>Logout</span>
+                    <span className='sm:text-lg text-base text-white bg-blue-900 px-[20px] sm:py-[12px] py-[9px] rounded-full hover:text-red-600 cursor-pointer' onClick={logout}>Logout</span>
                   </p>
                 </>)
                 :
                 (<>
                   <p>
-                    <Link className='text-lg ' to={"/login"}>Login</Link>
+                    <Link className='sm:text-lg text-base' to={"/login"}>Login</Link>
                   </p>
                   <p>
-                    <Link className='text-lg text-white bg-blue-900 px-[20px] py-[12px] rounded-full' to={"/register"}>Register</Link>
+                    <Link className='sm:text-lg text-base text-white bg-blue-900 px-[20px] sm:py-[12px] py-[9px] rounded-full' to={"/register"}>Register</Link>
                   </p>
                 </>)
               }
-              
               <div className='sm:hidden block'>
                 <FontAwesomeIcon icon={faBars} />
               </div>
             </div>
+            
         </div>
       </div>
     </header>

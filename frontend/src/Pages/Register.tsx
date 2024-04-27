@@ -58,18 +58,18 @@ function Register() {
   return (
     <main className='main-register p-[12rem] desktop-width'>
       <div className="content flex ">
-        <div className="left w-[84rem]">
-          <div className="img">
+        <div className="left w-[84rem] sm:block hidden">
+          <div className="img flex justify-center">
             <img src={registerImg} className='login-img' alt="login" />
           </div>
         </div>
-        <div className="right relative w-full border-s border-blue-900">
-          <div className="right-content flex flex-col justify-center items-center gap-4">
+        <div className="right relative w-full sm:border-s border-none border-blue-900">
+          <div className="right-content flex flex-col justify-center items-center gap-4 md:pb-0 pb-8">
             <div className="icon absolute top-[-44px] flex justify-center w-full">
               <FontAwesomeIcon icon={faUserCircle} className=' text-[6rem] text-blue-900' />
             </div>
             <h1 className='text-[2rem] font-semibold mt-[4rem]'>Register</h1>
-            <form onSubmit={handleClick} className="flex flex-col gap-7">
+            <form onSubmit={handleClick} className="flex flex-col gap-7 w-[75%]">
               <input type="text" name='username' 
                 value={credentials.username} 
                 onChange={handleChange} 
@@ -92,7 +92,7 @@ function Register() {
                 className='input-field'
                 required
                 />
-              <div className="btn">
+              <div className="btn mt-4">
                 <button type='submit' className='btn-submit w-full' >Create Account</button>
               </div>
             </form>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../Logo'
+import Logo from '../LogoFooter'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faLocationDot, faMailBulk, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -37,7 +37,7 @@ const footer_link2 = [
 function Footer() {
   return (
     <footer className='pt-[5rem] desktop-width'>
-      <div className="content flex justify-between">
+      <div className="content flex lg:flex-nowrap flex-wrap justify-between md:flex-row flex-col">
         <div className="item max-w-[27rem] w-full">
           <Logo />
           <p className='text-gray-600'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis temporibus tempora reprehe</p>

@@ -12,7 +12,7 @@ const responsive = {
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 3,
+      items: 2,
       slidesToSlide: 2 // optional, default to 1.
     },
     mobile: {
@@ -29,7 +29,7 @@ function Testmonial() {
             <Carousel 
                 responsive={responsive} 
                 draggable={true}
-                autoPlaySpeed={2000}
+                autoPlaySpeed={8000}
                 infinite={true}
                 autoPlay={true}
                 >
