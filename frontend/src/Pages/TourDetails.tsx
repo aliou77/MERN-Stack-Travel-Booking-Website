@@ -1,17 +1,20 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import {useParams} from 'react-router-dom';
 import calculateAvgRating from '../utls/calculateAvgRating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocation, faLocationDot, faMoneyBill, faStar, faUserGroup } from '@fortawesome/free-solid-svg-icons';
+// @ts-ignore
 import avatar from '../assets/images/avatar.jpg';
 import Booking from '../Components/Booking';
 import useFetch from '../hooks/useFetch';
 import { BASE_URL } from '../utls/config';
+import { AuthContext } from '../context/AuthContext';
 
 function TourDetails() {
 
   const {id} = useParams(); // get the id param set in this route (Routers.jsx)
-  const {data: tour, loading, error} = useFetch(`${BASE_URL}/tours/${id}`);
+  const {data: tour, loading, error} = useFetch(`${BASE_URL}/tours/${id}`) as any;
+  const {user} = useContext(AuthContext);
   // console.log(tour);
   
 
@@ -26,17 +29,52 @@ function TourDetails() {
   const ratingRef = useRef('');
   
   // send data to the server
-  const submitHandler = (e) =>{
+  const submitHandler = async (e) =>{
     e.preventDefault();
+    // @ts-ignore
     if(ratingRef.current.value === ''){
       alert("field is empty !")
     } else if(tourRating === 0){
       alert("please select a rating value !")
-    }else{
-      const ratingText = ratingRef.current.value
-      alert("text: " + ratingText + " value: " + tourRating)
     }
-    
+
+
+    // call api to submit the review
+    try {
+      const reviewText = ratingRef.current.value
+      // alert("text: " + reviewText + " value: " + tourRating)
+
+      if(!user || user === undefined || user === null){
+        alert("Please sign in before submitting a review !")
+      }
+
+      const reviewObj = {
+        username: user.username,
+        reviewText,
+        rating: tourRating,
+      }
+
+      const res = await fetch(`${BASE_URL}/reviews/${id}`, {
+        method: 'post',
+        headers: {
+          'content-type': 'application/json'
+        },
+        credentials: "include",
+        body: JSON.stringify(reviewObj)
+      })
+
+      const result = await res.json();
+      // console.log(result)
+      if(result.status !== 200){
+        alert(result.message)
+      }else{
+        alert(result.message)
+      }
+
+      
+    } catch (error) {
+      alert(error.message)
+    }
   }
   
 
@@ -86,7 +124,7 @@ function TourDetails() {
                 </div>
               </div>
               <div className="tour-reviews border border-blue-500 mt-8 px-8 py-[3rem]">
-                <h5 className='font-medium text-xl text-blue-900'>Reviews ({ 0} reviews)</h5>
+                <h5 className='font-medium text-xl text-blue-900'>Reviews ({tour.reviews ? tour.reviews?.length : 0} reviews)</h5>
                 <div className="star-rating flex items-center gap-4 mt-4">
                   <div className='flex gap-1 items-center cursor-pointer' onClick={() => setTourRating(1)}>
                     <span>1</span>
@@ -125,17 +163,17 @@ function TourDetails() {
                               <img src={avatar} alt="avatar" className='w-[80px]' />
                             </div>
                             <div className="desc">
-                              <h6 className='font-bold text-lg text-blue-900'>Aliou</h6>
+                              <h6 className='font-bold text-lg text-blue-900 capitalize'>{review.username}</h6>
                               <p className='text-gray-600 text-sm'>
                                 { // @ts-ignore
-                                  new Date("01-14-2024").toLocaleDateString("en-US", options )
+                                  new Date(review.createdAt).toLocaleDateString("en-US", options )
                                 }
                               </p>
-                              <p>Amazing amazing tour...</p>
+                              <p>{review.reviewText.lenght > 50 ? review.reviewText.substring(0, 50) + "..." : review.reviewText}</p>
                             </div>
                           </div>
                           <div className="rating-note">
-                            (5)<FontAwesomeIcon icon={faStar} className='text-orange-400' />
+                            ({review?.rating})<FontAwesomeIcon icon={faStar} className='text-orange-400' />
                           </div>
                       </div>
                     })

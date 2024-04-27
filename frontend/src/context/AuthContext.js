@@ -7,11 +7,7 @@ const initial_state = {
     error: null,
 }
 
-const AuthContext = createContext(initial_state);
-
-export {
-    AuthContext
-}
+export const AuthContext = createContext(initial_state);
 
 const authReducer = (state, action) =>{
     switch(action.type){
@@ -60,11 +56,11 @@ export const AuthContextProvider = ({ children })=>{
 
     // return the provider for this context
     return <AuthContext.Provider value={{
-        user: state.user,
-        loading: state.loading,
-        error: state.error,
-        dispatch,
-    }}>
+            user: state.user,
+            loading: state.loading,
+            error: state.error,
+            dispatch,
+        }}>
         { children }
     </AuthContext.Provider>
 }

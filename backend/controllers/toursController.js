@@ -13,7 +13,8 @@ export const createTour = async (req, res)=>{
         .json({
             success: true,
             message: "Tour created successfully",
-            data: savedTour
+            data: savedTour, 
+            status: 200
         })
     } catch (error) {
         res
@@ -38,7 +39,8 @@ export const updateTour = async (req, res) => {
         .json({
             success: true,
             message: "Tour successfully updated",
-            data: updatedTour
+            data: updatedTour, 
+            status: 200
         })
 
     } catch (error) {
@@ -62,6 +64,7 @@ export const deleteTour = async (req, res) => {
         .json({
             success: true,
             message: "Tour successfully deleted",
+            status: 200
         })
 
     } catch (error) {
@@ -85,7 +88,8 @@ export const getOneTour = async(req, res) => {
         .json({
             success: true,
             message: "successful",
-            data: tour
+            data: tour, 
+            status: 200
         })
 
     } catch (error) {
@@ -112,7 +116,8 @@ export const getAllTour = async (req, res) => {
             success: true,
             message: "successful",
             count: tours.length,
-            data: tours
+            data: tours, 
+            status: 200
         })
 
     } catch (error) {
@@ -147,7 +152,8 @@ export const getTourBySearch = async (req, res) => {
             success: true,
             message: "successful",
             count: tours.length,
-            data: tours
+            data: tours, 
+            status: 200
         })
     } catch (error) {
         res
@@ -171,7 +177,8 @@ export const getFeaturedTours = async (req, res) => {
         .json({
             success: true,
             message: "successful",
-            data: tours
+            data: tours, 
+            status: 200
         })
     } catch (error) {
         res
@@ -187,7 +194,7 @@ export const getTourCount = async (req, res) => {
     try {
         const tourCount = await Tour.estimatedDocumentCount()
 
-        res.status(200).json({success: true, data: tourCount})
+        res.status(200).json({success: true, data: tourCount, status: 200})
     } catch (error) {
         res.status(500).json({success: false, message: "Failed to get tour count"})
     }

@@ -13,7 +13,8 @@ export const createUser = async (req, res)=>{
         .json({
             success: true,
             message: "User created successfully",
-            data: savedUser
+            data: savedUser, 
+            status: 200
         })
     } catch (error) {
         res
@@ -38,7 +39,8 @@ export const updateUser = (req, res) => {
         .json({
             success: true,
             message: "User successfully updated",
-            data: updatedUser
+            data: updatedUser, 
+            status: 200
         })
 
     } catch (error) {
@@ -61,7 +63,8 @@ export const deleteUser = (req, res) => {
         .status(200)
         .json({
             success: true,
-            message: "User successfully deleted",
+            message: "User successfully deleted", 
+            status: 200
         })
 
     } catch (error) {
@@ -85,7 +88,8 @@ export const getOneUser = async(req, res) => {
         .json({
             success: true,
             message: "successful",
-            data: user
+            data: user, 
+            status: 200
         })
 
     } catch (error) {
@@ -109,7 +113,8 @@ export const getAllUser = async (req, res) => {
         .json({
             success: true,
             message: "successful",
-            data: users
+            data: users, 
+            status: 200
         })
 
     } catch (error) {

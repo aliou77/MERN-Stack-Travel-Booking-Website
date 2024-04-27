@@ -63,7 +63,7 @@ function Header() {
           <ul className='links flex justify-center gap-8 text-black text-lg'>
             {
               nav_link.map((item, index) =>(
-                <li className='header-link-item hover:text-blue-900 font-medium' id={index} key={index}>
+                <li className='header-link-item hover:text-blue-900 font-medium' id={`${index}`} key={index}>
                   <NavLink to={item.path} className={ navClass => 
                     navClass.isActive ? "active" : ""
                   } >{item.diaplay}</NavLink>
@@ -106,4 +106,4 @@ function Header() {
   )
 }
 
-export default Header
+export default Header;
