@@ -19,6 +19,7 @@ using Jest framwork to test our react application
 
 
 ### Tasks
+- stoped at submiting booking to the server
 
 - check instructions inside authController (login function)
 - check verifyToken function too

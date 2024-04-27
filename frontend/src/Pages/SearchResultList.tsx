@@ -7,7 +7,7 @@ function SearchResultList() {
 
   // will get results from the search bar, gotta search how it works
   const [data] = useState(location.state)
-  // console.log(data)
+  console.log(data)
   return (
     <main className='main-searchResultList'>
       <div className="content">
@@ -19,9 +19,9 @@ function SearchResultList() {
           <div className="result-list mt-[5rem] desktop-width">
             <div className="tours-content flex gap-8 flex-wrap">
               {
-                data === 0 
+                data.length === 0 
                 ?
-                <h2 className='text-xl text-gray-700'>No Tour Found !</h2>
+                <h2 className='text-xl text-gray-700 text-center w-full'>No Tour Found !</h2>
                 :
                 data.map((tour, index) =>{
                     return <TourCard tour={tour} key={index} />

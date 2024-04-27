@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
+import React, { FormEvent, useContext, useState } from 'react'
 import calculateAvgRating from '../utls/calculateAvgRating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate} from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import { BASE_URL } from '../utls/config';
 
 function Booking({tour}) {
     const { avgRating, totalRating} = calculateAvgRating(tour?.reviews);
-    const [credentials, setCredentials] = useState({
-        userId: '01',
-        email: "test@gmail.com",
+
+    const {user} = useContext(AuthContext);
+
+    const [booking, setBooking] = useState({
+        userId: user && user._id,
+        email: user && user.email,
+        tourName: tour.title,
         fullName: "",
         phone: "",
         guestSize: 1,
@@ -16,22 +22,49 @@ function Booking({tour}) {
     })
     const navigate = useNavigate()
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
+    const handleChange = (e: any) =>{
         // console.log( e)
-        setCredentials(prev => ({
+        setBooking(prev => ({
             ...prev,
             [e.target?.name]: e.target?.value
         }))
     }
 
-    const handleClick = (e: React.MouseEvent<HTMLElement>) =>{
+    const handleSubmit = async (e: React.MouseEvent<HTMLElement>) =>{
         e.preventDefault()
         // console.log(credentials)
-        navigate("/thank-you");
+
+        // create a new booking
+        try {
+            if(!user || user === undefined || user === null){
+                alert("Please sign in !")
+            }
+
+            const res = await fetch(`${BASE_URL}/booking`, {
+                method: 'post',
+                headers: {
+                  'content-type': 'application/json'
+                },
+                credentials: "include",
+                body: JSON.stringify(booking)
+            })
+        
+            const result = await res.json();
+            if(result.status !== 200){
+                return alert(result.message)
+            } else{
+                navigate("/thank-you");
+            }
+            
+        } catch (error) {
+            alert(error.message);
+        }
+
+        
     }
 
     const serviceFee = 10;
-    const totalAmount = Number(tour.price) * Number(credentials.guestSize) + Number(serviceFee);
+    const totalAmount = Number(tour.price) * Number(booking.guestSize) + Number(serviceFee);
 
 
   return (
@@ -47,13 +80,13 @@ function Booking({tour}) {
             <p className='pt-[1px] bg-blue-400 my-8'></p>
             <div className="form-informations">
                 <h6 className='my-2 text-xl font-bold'>Informations</h6>
-                <form className='' onSubmit={()=> handleClick}>
+                <form className='' onSubmit={(e)=> handleSubmit(e)}>
                     <div className="form-content flex flex-col gap-4">
-                        <input type="text" name='fullName'  value={credentials.fullName } onChange={handleChange}  placeholder='Full name' className='w-full outline-none bg-transparent ps-1 border-b' required />
-                        <input type="text" name='phone' value={credentials.phone } onChange={handleChange}   placeholder='Phone' className='w-full outline-none bg-transparent ps-1 border-b' required />
+                        <input type="text" name='fullName'  value={booking.fullName } onChange={handleChange}  placeholder='Full name' className='w-full outline-none bg-transparent ps-1 border-b' required />
+                        <input type="text" name='phone' value={booking.phone } onChange={handleChange}   placeholder='Phone' className='w-full outline-none bg-transparent ps-1 border-b' required />
                         <div className="flex justify-between gap-8">
-                            <input type="date" name='bookAt'  value={credentials.bookAt } onChange={handleChange} className='w-full outline-none bg-transparent ps-1 border-b' required />
-                            <input type="text" name='guestSize' value={credentials.guestSize } onChange={handleChange}  placeholder='Guest'  className='w-full outline-none bg-transparent ps-1 border-b' required />
+                            <input type="date" name='bookAt'  value={booking.bookAt } onChange={handleChange} className='w-full outline-none bg-transparent ps-1 border-b' required />
+                            <input type="text" name='guestSize' value={booking.guestSize } onChange={handleChange}  placeholder='Guest'  className='w-full outline-none bg-transparent ps-1 border-b' required />
                         </div>
                     </div>
                     <div className="recap flex flex-col gap-4 mt-8">

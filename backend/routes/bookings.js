@@ -4,7 +4,7 @@ import { createBooking, getAllBooking, getBooking } from '../controllers/booking
 
 const router = express.Router();
 
-router.post("/new", verifyUser, createBooking);
+router.post("/", verifyUser, createBooking);
 router.get("/:id", verifyUser, getBooking);
 router.get("/all", verifyAdmin, getAllBooking);
 
