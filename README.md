@@ -1,4 +1,4 @@
-### MERN stack - travel booking website
+### Travel Booking
 
 # -------------------------------------- 
 
